@@ -11,8 +11,9 @@
 #   export WANT_PIM=1
 #   export WANT_OSPFAPI=1
 #   export WANT_TCP_ZEBRA=0
-#   export WANT_BGP_VNC=0
+export WANT_BGP_VNC=0
 export WANT_CUMULUS_MODE=1
+export WANT_SNMP=1
 #   export WANT_MULTIPATH=1
 #   export WANT_RPKI=0
 #
@@ -159,7 +160,7 @@ override_dh_auto_configure:
 		--enable-poll=yes \
 		$(USE_CUMULUS) \
 		$(USE_PIM) \
-		--enable-dependency-tracking \
+		--enable-dependency-tracking --enable-datacenter=yes --with-vtysh-pager=cat --enable-vtysh=yes \
 		$(USE_BGP_VNC) \
 		$(USE_RPKI) \
 		$(shell dpkg-buildflags --export=configure); \
